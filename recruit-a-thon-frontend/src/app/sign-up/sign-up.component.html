@@ -1,0 +1,109 @@
+<div class="login-sign-body row justify-content-center">
+  <div class="col-md-9 col-lg-12 col-xl-10">
+    <div class="card shadow-lg o-hidden border-0 my-5">
+      <div class="card-body p-0">
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-flex">
+            <div class="flex-grow-">
+              <img class="card-img-top img-fluid justify-content-center img-holder ml-4" src="assets\img\image-4.png">
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h4 class="text-dark mb-4">Create an Account!</h4>
+              </div>
+              <alert [type]="errorType">
+                {{errorMessage}}
+              </alert>
+              <form class="user" [formGroup]="signUpForm" (submit)="addUser()">
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="text"
+                      id="exampleFirstName" placeholder="First Name"
+                      onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                      formControlName="firstname" minlength="3" maxlength="30" required>
+                  </div>
+                  <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleFirstName"
+                      placeholder="Last Name" formControlName="lastname"
+                      onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                      minlength="3" maxlength="30" required>
+                  </div>
+                  <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                    class="offset-sm-1 text-danger">
+
+                    <div *ngIf="firstname.errors.required">
+                      First name is required.
+                    </div>
+                    <div *ngIf="firstname.errors.minlength">
+                      First name must be at least 3 characters long.
+                    </div>
+                  </div>
+
+                  <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="offset-sm-1 text-danger">
+                    <div *ngIf="lastname.errors.required">
+                      Last name is required.
+                    </div>
+                    <div *ngIf="lastname.errors.minlength">
+                      Last name must be at least 3 characters long.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6"><input class="form-control form-control-user" type="email"
+                      id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email Address"
+                      formControlName="username" required>
+                  </div>
+                  <div class="col-sm-6"><input class="form-control form-control-user" type="text" id="exampleContact"
+                      placeholder="Contact Number" maxlength="10"
+                      oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                      formControlName="contact" required>
+                  </div>
+                  <div class="offset-sm-1 text-danger" *ngIf="username.invalid && username.touched && username.dirty">
+                    Please enter valid email
+                  </div>
+                  <div class="offset-sm-1 text-danger" *ngIf="contact.invalid && contact.touched && contact.dirty">
+                    Please enter valid mobile number
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input class="form-control form-control-user" type="password" id="examplePasswordInput"
+                      minlength="5" maxlength="30" placeholder="Password" formControlName="password" required>
+                  </div>
+                  <div class="col-sm-6"><input class="form-control form-control-user" type="password"
+                      id="exampleRepeatPasswordInput" placeholder="Repeat Password" formControlName="confirmPassword"
+                      required>
+                  </div>
+                  <div class="offset-sm-1 text-danger"
+                    *ngIf="confirmPassword.invalid && confirmPassword.errors.required && confirmPassword.touched">
+                    Confirm the Password</div>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="offset-sm-1 text-danger">
+                    <div *ngIf="password.errors.minlength">
+                      Password must be at least 5 characters long.
+                    </div>
+                  </div>
+                  <div class="offset-sm-1 text-danger" *ngIf="signUpForm.get('confirmPassword').hasError('nomatch')">
+                    Password
+                    and Confirm Password do not match</div>
+                </div>
+                <button class="btn btn-primary btn-block text-white btn-user" [disabled]="signUpForm.invalid"
+                  type="submit">
+                  Register Account
+                </button>
+                <hr>
+              </form>
+              <div class="row">
+                <div class="col-4">
+                  <a class="small" href="javascript:void(0)">Forgot Password?</a>
+                </div>
+                <div class="small offset-3 col-5">Already have an account?
+                  <a (click)="goToLogin()"> Login!</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

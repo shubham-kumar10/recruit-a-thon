@@ -1,0 +1,8 @@
+@import "~@angular/material/theming";
+@include mat-core();
+
+$suitup-primary: mat-palette(#242939);
+$suitup-accent: mat-palette($mat-indigo, 900, 200, 100);
+$suitup-warn: mat-palette($mat-deep-orange);
+$suitup-theme: mat-light-theme($suitup-primary, $suitup-accent, $suitup-warn);
+@include angular-material-theme($suitup-theme);

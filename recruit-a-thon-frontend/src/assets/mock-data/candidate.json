@@ -1,0 +1,24 @@
+{
+    "id": "",
+    "user": {
+        "id": 1,
+        "userName": "Test User 1",
+        "password": "pwd",
+        "firstName": "firstName",
+        "lastName": "lastName",
+        "contactNumber": "1234567890",
+        "regCode": "",
+        "role": "S",
+        "active": true,
+        "confirmedSignUp": true,
+        "resetPassword": "",
+        "resetPasswordDate": ""
+    },
+    "dateOfBirth": "",
+    "gender": "M",
+    "bio": "bio",
+    "country": "country",
+    "city": "city",
+    "profilePicture": "",
+    "resume": ""
+}

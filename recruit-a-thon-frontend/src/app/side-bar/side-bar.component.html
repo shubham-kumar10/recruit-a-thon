@@ -1,0 +1,63 @@
+<aside class="sidebar shadow-sm">
+
+  <div class="sidebar-profile d-flex flex-column justify-content-center pt-5 pb-3">
+    <div class="picture-wrapper mb-4">
+      <div class="user-picture m-auto pointer-link" (click)="changePicture()">
+        <div *ngIf="this.candidateService.profilePicture">
+          <img [src]="this.candidateService.profilePicture" class="img-fluid">
+        </div>
+        <div *ngIf="!this.candidateService.profilePicture">
+          <img src="./assets/img/user.jpg" class="img-fluid">
+        </div>
+      </div>
+    </div>
+    <div class="profile-details text-center pb-4">
+      <p class="mb-0 text-uppercase name">{{firstname}} {{lastname}}</p>
+      <small class="text-uppercase role">{{headLine}}</small>
+    </div>
+  </div>
+  <nav class="sidebar-menu pt-3 pb-3">
+    <div class="menu-header mt-3 mb-2">
+      Components
+    </div>
+    <ul class="menu-items">
+      <li>
+        <a routerLink="/dashboard" routerLinkActive="active">
+          <i class="fa fa-tv"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/profile" routerLinkActive="active">
+          <i class="fas fa-user"></i>
+          <span>Profile</span>
+        </a>
+      </li>
+      <li *ngIf="(authService.getUserDetails().role === 'RECRUITER' || authService.getUserDetails().role !== null)">
+        <a routerLink="/addjobs" routerLinkActive="active">
+          <i class="fas fa-envelope"></i>
+          <span class="dropdown-btn">Post Jobs</span>
+        </a>
+      </li>
+      <li *ngIf="(authService.getUserDetails().role === 'CANDIDATE' || authService.getUserDetails().role === null)">
+        <a routerLink="/jobs" routerLinkActive="active">
+          <i class="fas fa-envelope"></i>
+          <span class="dropdown-btn">Jobs</span>
+        </a>
+      </li>
+      <li *ngIf="(authService.getUserDetails().role === 'CANDIDATE' || authService.getUserDetails().role === null)">
+        <a routerLink="/appliedjobs" routerLinkActive="active">
+          <i class="fas fa-check-circle"></i>
+          <span class="dropdown-btn">Applied Jobs</span>
+        </a>
+      </li>
+      <li *ngIf="(authService.getUserDetails().role === 'CANDIDATE' || authService.getUserDetails().role === null)">
+        <a routerLink="/savedjobs" routerLinkActive="active">
+          <i class="fas fa-bookmark"></i>
+          <span class="dropdown-btn">Saved Jobs</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+</aside>

@@ -1,0 +1,35 @@
+<mat-horizontal-stepper linear #stepper>
+  <!--First Form Stepper Mandatory Details-->
+  <mat-step [stepControl]="personalDetailsForm" [optional]="false">
+    <ng-template matStepLabel>Personal Details</ng-template>
+    <app-personal-form [personalDetailsForm]="personalDetailsForm"></app-personal-form>
+  </mat-step>
+
+  <!--Second Form Stepper Education Details-->
+  <mat-step [stepControl]="educationDetailsForm" [optional]="isOptional">
+    <ng-template matStepLabel>Education Details</ng-template>
+    <app-education-form [educationDetailsForm]="educationDetailsForm"></app-education-form>
+  </mat-step>
+
+  <!--THrid Form Stepper Experience Details-->
+  <mat-step [stepControl]="experienceDetailsForm" [optional]="isOptional">
+    <ng-template matStepLabel>Experience</ng-template>
+    <app-experience-form [experienceDetailsForm]="experienceDetailsForm"></app-experience-form>
+  </mat-step>
+
+  <!--Fourth Form Stepper Additional(Project,Certificate etc.) Details-->
+  <mat-step [stepControl]="additionalDetailsForm" [optional]="isOptional">
+    <ng-template matStepLabel>Additional Details</ng-template>
+    <app-project-form [projectDetailsForm]="additionalDetailsForm"></app-project-form>
+  </mat-step>
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="addCandidateDetails()">Save and Proceed</button>
+      <!--<button mat-button (click)="stepper.reset()">Reset</button>-->
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>

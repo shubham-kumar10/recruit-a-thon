@@ -1,0 +1,161 @@
+<div class="row">
+  <div class="col-md-12 col-lg-6 mb-4 align-items-stretch">
+    <div class="card border-0 rounded-0 h-100">
+      <div class="card-title mb-1 px-3 pt-3">
+        <div class="row">
+          <h4 class="col-lg-6 pt-2">Personal Details</h4>
+          <div class="col-lg-6">
+            <a class="btn btn-outline-lightning rounded-0 px-2 py-1 waves-effect waves-light float-right"
+              (click)="goToEdit()">
+              <i class="far fa-edit"></i>
+            </a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row mb-1">
+            <div class="col-4 p-0">Date of Birth:</div>
+            <div class="col-8">{{candidateDetails.dateOfBirth | date}}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-4 p-0">Gender:</div>
+            <div class="col-8">{{candidateDetails.gender}}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-4 p-0">Lcation:</div>
+            <div class="col-8">{{candidateDetails.city}}, {{candidateDetails.country}}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-4 p-0">Email:</div>
+            <div class="col-8">{{userDetails.username}}</div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-4 p-0">Contact Number:</div>
+            <div class="col-8">{{userDetails.contactnumber}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-title mb-1 px-3">
+        <div class="row">
+          <h4 class="col-lg-6 pt-2">Education Details</h4>
+          <div class="col-lg-6">
+            <a class="btn btn-outline-lightning rounded-0 px-2 py-1 waves-effect waves-light float-right">
+              <i class="far fa-edit"></i>
+            </a>
+          </div>
+        </div>
+        <div *ngIf="candidateDetails.education.length > 0; else addEducation">
+          <div class="card-body pb-0" *ngFor="let data of candidateDetails.education; let i = index">
+            <div class="row mb-1">
+              <div class="col-4 p-0">Institution {{i+1}}:</div>
+              <div class="col-8">{{data.institution}}</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4 p-0">Board/Degree:</div>
+              <div class="col-8">{{data.degree}}</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4 p-0">Major:</div>
+              <div class="col-8">{{data.description}}</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4 p-0">Percentage/CGPA:</div>
+              <div class="col-8">{{data.percentage}}</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4 p-0">Course Duration:</div>
+              <div class="col-8">{{data.startDate | date}} - {{data.endDate | date}}</div>
+            </div>
+          </div>
+        </div>
+        <ng-template #addEducation>
+          <div class="card-body">
+            <alert type="info">Add your academic details.</alert>
+          </div>
+        </ng-template>
+      </div>
+      <div class="card-title mb-1 px-3">
+        <div class="row">
+          <h4 class="col-lg-12 pt-2">Your Skills:</h4>
+          <div class="card-body pt-1">
+            <mat-chip-list>
+              <mat-chip *ngFor="let skill of candidateDetails.skills">
+                {{skill.skillName}}
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-6 mb-4 align-items-stretch pl-0">
+    <div class="card border-0 rounded-0 h-100">
+      <div class="card-title mb-1 px-3 pt-3 pb-2">
+        <div class="row">
+          <h4 class="col-lg-6 pt-2">Experience Details:</h4>
+          <div class="col-lg-6">
+            <a class="btn btn-outline-lightning rounded-0 px-2 py-1 waves-effect waves-light float-right">
+              <i class="far fa-edit"></i>
+            </a>
+          </div>
+        </div>
+        <div *ngIf="candidateDetails.experience.length > 0;else addExperience">
+          <div class="card-body pb-0" *ngFor="let data of candidateDetails.experience; let i = index">
+            <div class="row mb-1">
+              <div class="col-4 p-0">Organization {{i+1}}:</div>
+              <div class="col-8">{{data.organization}}</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4 p-0">Position/Role:</div>
+              <div class="col-8">{{data.designation}}</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4 p-0">Employement Type:</div>
+              <div class="col-8">{{data.type}}</div>
+            </div>
+            <div class="row mb-1" *ngIf="data.endDate && !data.current">
+              <div class="col-4 p-0">Period:</div>
+              <div class="col-8">{{data.startDate | date}} - {{data.endDate | date}}</div>
+            </div>
+            <div class="row mb-1" *ngIf="data.current">
+              <div class="col-12 p-0">I am currently working here since {{data.startDate | date}}.</div>
+            </div>
+          </div>
+        </div>
+        <ng-template #addExperience>
+          <div class="card-body">
+            <alert type="info">Tell us where you worked.</alert>
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="card-title mb-1 px-3">
+        <div class="row">
+          <h4 class="col-lg-6 pt-2">Your Projects</h4>
+          <div class="col-lg-6">
+            <a class="btn btn-outline-lightning rounded-0 px-2 py-1 waves-effect waves-light float-right">
+              <i class="far fa-edit"></i>
+            </a>
+          </div>
+        </div>
+        <div *ngIf="candidateDetails.project.length > 0; else addProject">
+          <div class="card-body" *ngFor="let data of candidateDetails.project; let i = index">
+            <div class="row mb-1">
+              <div class="col-4 p-0">Title {{i+1}}:</div>
+              <div class="col-8">{{data.name}} ({{data.startDate | date}} - {{data.endDate | date}})</div>
+            </div>
+            <div class="row mb-1">
+              <div class="col-4 p-0">About:</div>
+              <div class="col-8">{{data.description}}</div>
+            </div>
+          </div>
+        </div>
+        <ng-template #addProject>
+          <div class="card-body">
+            <alert type="info">Add projects to showcase your work.</alert>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

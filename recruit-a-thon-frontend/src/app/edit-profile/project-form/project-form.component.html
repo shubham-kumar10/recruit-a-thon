@@ -1,0 +1,118 @@
+<form [formGroup]="projectDetailsForm">
+  <div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 mb-4 align-items-stretch">
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-title mb-1 p-3">
+            <h5>Projects</h5>
+          </div>
+          <div class="card-body">
+
+            <div formArrayName="project">
+              <div *ngFor="let project of projectDetailsForm.get('project')['controls']; let i = index"
+                [formGroupName]="i">
+                <div class="form-group row">
+                  <label for="name" class="col-sm-2 col-form-label text-nowrap">Project title {{i+1}}:</label>
+                  <div class="col-xs-6">
+                    <input type="text" id='name' class="form-control" placeholder="Enter your project title"
+                      formControlName="name" required>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <label for="startDate" class="col-sm-2 col-form-label text-nowrap">Starting date:</label>
+                  <div class="col-xs-4">
+                    <input type="date" id="startDate" class="form-control" placeholder="dd-mm-yyyy" value=""
+                      formControlName="startDate" required>
+                  </div>
+
+                  <div class="col-xs-4">
+                    <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                      (click)="addProjectFormGroup()" matTooltip="Add">
+                      <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                    <button class="float-left" mat-icon-button color="primary" aria-label="Remove/clear"
+                      (click)="removeOrClearProject(i)" matTooltip="Remove">
+                      <mat-icon>highlight_off</mat-icon>
+                    </button>
+                  </div>
+
+                </div>
+                <div class="form-group row">
+                  <label for="description" class="col-sm-2 col-form-label text-nowrap">Description:</label>
+                  <div class="col-xs-4">
+                    <input type="text" id='degree' class="form-control" placeholder="Describe your project"
+                      formControlName="description" required>
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <label for="endDate" class="col-sm-2 col-form-label text-nowrap">Ending date:</label>
+                  <div class="col-xs-4">
+                    <input type="date" id="endDate" class="form-control" placeholder="dd-mm-yyyy" value=""
+                      formControlName="endDate" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-xs-4">
+                    <mat-checkbox class="col-12" formControlName="ongoing" color="primary">Ongoing</mat-checkbox>
+                  </div>
+                </div>
+
+                <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div class="row">
+      <div class="col-md-12 col-lg-12 mb-4 align-items-stretch">
+        <div class="card border-0 rounded-0 h-100">
+          <div class="card-title mb-1 p-3">
+            <h5>Skills</h5>
+          </div>
+          <div class="card-body">
+
+            <div class="form-group row">
+              <label for="name" class="col-sm-2 col-form-label text-nowrap">Add your skills:</label>
+
+              <div formArrayName="skills">
+                <div class="row" *ngFor="let skill of projectDetailsForm.get('skills')['controls']; let i = index"
+                  [formGroupName]="i">
+                  <div class="col-xs-4">
+                    <input class="form-control" formControlName="skillName" placeholder="Skills {{i+1}}"
+                      autocomplete="skill">
+                  </div>&nbsp;&nbsp;&nbsp;
+                  <div class="col-xs-4 pt-2">
+                    <mat-radio-group formControlName="rating" aria-label="rating" color="primary">
+                      <mat-radio-button value="1">Novice</mat-radio-button> &nbsp;&nbsp;&nbsp;
+                      <mat-radio-button value="2">Intermediate</mat-radio-button> &nbsp;&nbsp;&nbsp;
+                      <mat-radio-button value="3">Advanced</mat-radio-button> &nbsp;&nbsp;&nbsp;
+                    </mat-radio-group>
+                  </div>
+
+                  <div class="col-xs-4">
+                    <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                      (click)="addSkillFormGroup()" matTooltip="Add">
+                      <mat-icon>add_circle_outline</mat-icon>
+                    </button>
+                    <button class="float-left" mat-icon-button color="primary" aria-label="Remove/clear"
+                      (click)="removeOrClearSkill(i)" matTooltip="Remove">
+                      <mat-icon>highlight_off</mat-icon>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button mat-button matStepperPrevious>Back</button>
+  <button mat-button matStepperNext (click)="addProjectDetails()">Next</button>
+</form>
+
+<br>

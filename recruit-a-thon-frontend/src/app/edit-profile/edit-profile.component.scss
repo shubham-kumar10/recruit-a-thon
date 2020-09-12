@@ -1,0 +1,14 @@
+app-edit-profile {
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+
+  .mat-form-field {
+    margin-top: 16px;
+  }
+}
+::ng-deep body {
+  height: 100vh;
+  margin: 0;
+  padding-top: 60px;
+}

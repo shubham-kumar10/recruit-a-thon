@@ -1,0 +1,23 @@
+<div row>
+    <div class="col-12">
+        Select a file from your computer.
+    </div>
+</div>
+<div class="row">
+    <div class="col-12" *ngIf="selectedFile.name">
+        {{this.selectedFile.name}}
+    </div>
+    <input style="display: none" type="file" (change)="onFileChanged($event)" #hiddenfileinput>
+    <button (click)="hiddenfileinput.click()" class="waves-effect waves-light btn">
+        <i class="material-icons left">cloud</i>
+        Browse
+    </button>
+</div>
+<div class="row mt-3" *ngIf="picture" class="image-container">
+    <img [src]="picture" class="img-fluid">
+</div>
+<div class="row mt-3" *ngIf="picture">
+    <a class="btn btn-outline-lightning rounded-0 px-2 py-1 waves-effect waves-light float-right" (click)="close()">
+        <i class="far fa-edit"> Done </i>
+    </a>
+</div>

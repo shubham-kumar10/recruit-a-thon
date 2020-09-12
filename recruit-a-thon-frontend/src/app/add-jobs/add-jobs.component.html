@@ -1,0 +1,246 @@
+<form [formGroup]="jobDetailsForm">
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 mb-4 align-items-stretch">
+                <div class="card border-0 rounded-0 h-100">
+                    <div class="card-title mb-1 p-3">
+                        <h5>Post a Job!</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="companyName" class="col-sm-2 col-form-label text-nowrap">
+                                Comapany:
+                            </label>
+                            <div class="col-xs-4">
+                                <input type="text" id='companyName' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Company Name" formControlName="companyName"
+                                    required>
+                            </div>
+                            <label for="position" class="offset-sm-1 col-sm-2 col-form-label text-nowrap">
+                                Position:
+                            </label>
+                            <div class="col-xs-4">
+                                <input type="text" id='position' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Enter position" formControlName="position"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="location" class="col-sm-2 col-form-label text-nowrap">Location:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='location' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Location" formControlName="location" required>
+                            </div>
+                            <label for="compensation" class="offset-sm-1 col-sm-2 col-form-label text-nowrap">
+                                Salary(LPA):
+                            </label>
+                            <div class="col-xs-4">
+                                <input class="form-control" id="compensation" placeholder="Compensation" type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="10" formControlName="compensation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="pointOfContact" class="col-sm-2 col-form-label text-nowrap">Point of
+                                Contact:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='pointOfContact' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="P.O.C" formControlName="pointOfContact" required>
+                            </div>
+                            <label for="vacancies" class="offset-sm-1 col-sm-2 col-form-label text-nowrap">
+                                No. of vacancies:
+                            </label>
+                            <div class="col-xs-4">
+                                <input class="form-control" id="vacancies" placeholder="Vacancies" type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="10" formControlName="vacancies" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="description" class="col-sm-2 col-form-label text-nowrap">Description:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='description' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Describe..." formControlName="description"
+                                    required>
+                            </div>
+                            <label for="minimumEducation" class="offset-sm-1 col-sm-2 col-form-label text-nowrap">
+                                Qualification:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='minimumEducation' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Course" formControlName="minimumEducation"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="minimumExperience" class="col-sm-2 col-form-label text-nowrap">
+                                Experience:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='minimumExperience' maxlength="2"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    class="form-control" placeholder="Min experience"
+                                    formControlName="minimumExperience" required>
+                            </div>
+                            <div class="offset-sm-1  col-xs-4">
+                                <mat-checkbox class="col-12" [(ngModel)]="indeterminate"
+                                    formControlName="travelRequired" color="primary">Traveling
+                                    Required?
+                                </mat-checkbox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="travelPercent" class="col-sm-2 col-form-label text-nowrap">
+                                Travelling(in %):</label>
+                            <div class="col-xs-4">
+                                <input class="form-control" id="travelPercent" placeholder="Travel %" type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="3" formControlName="travelPercent" required>
+                            </div>
+
+                        </div>
+                        <mat-divider></mat-divider>
+                        <br />
+                        <h5>Skillset:</h5>
+                        <div formArrayName="skillsRequired">
+                            <div *ngFor="let skill of jobDetailsForm.get('skillsRequired')['controls']; let i = index"
+                                [formGroupName]="i">
+                                <div class="form-group row">
+                                    <label for="name" class="col-sm-2 col-form-label text-nowrap">Skills
+                                        {{i+1}}:</label>
+                                    <div class="col-xs-4">
+                                        <input type="text" id='name' class="form-control" placeholder="Skills {{i+1}}"
+                                            formControlName="name" required>
+                                    </div>
+                                    <label for="experience"
+                                        class="offset-sm-1 col-sm-2 col-form-label text-nowrap">Experience:</label>
+                                    <div class="col-xs-4">
+                                        <input type="text" id='experience' class="form-control"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                            maxlength="2" placeholder="Experience (in yrs)" formControlName="experience"
+                                            required>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                                            (click)="addSkillFormGroup()" matTooltip="Add">
+                                            <mat-icon>add_circle_outline</mat-icon>
+                                        </button>
+                                        <button class="float-left" mat-icon-button color="primary"
+                                            aria-label="Remove/clear" (click)="removeOrClearSkill(i)"
+                                            matTooltip="Remove">
+                                            <mat-icon>highlight_off</mat-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                                <mat-divider></mat-divider><br />
+                            </div>
+                        </div>
+                        <br />
+                        <h5>Interview Process:</h5>
+                        <br />
+                        <div class="form-group row">
+                            <label for="finaldescription" class="col-sm-2 col-form-label text-nowrap">Interview
+                                type:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='finaldescription' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Describe..." formControlName="finaldescription"
+                                    required>
+                            </div>
+                            <label for="finallocation" class="offset-sm-1 col-sm-2 col-form-label text-nowrap">
+                                Interview Location:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='finallocation' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Course" formControlName="finallocation" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="duration" class="col-sm-2 col-form-label text-nowrap">
+                                Duration(in hrs):
+                            </label>
+                            <div class="col-xs-4">
+                                <input class="form-control" id="duration" placeholder="Duration" type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="2" formControlName="duration" required>
+                            </div>
+                        </div>
+
+                        <div formArrayName="rounds">
+                            <div *ngFor="let round of jobDetailsForm.get('rounds')['controls']; let i = index"
+                                [formGroupName]="i">
+                                <h6>Round {{i+1}}:</h6>
+                                <div class="form-group row">
+                                    <label for="location" class="col-sm-2 col-form-label text-nowrap">
+                                        Interview Location:</label>
+                                    <div class="col-xs-4">
+                                        <input type="text" id='location' maxlength="30"
+                                            onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                            class="form-control" placeholder="Course" formControlName="location"
+                                            required>
+                                    </div>
+                                    <label for="duration" class="offset-sm-1  col-sm-2 col-form-label text-nowrap">
+                                        Duration(in hrs):
+                                    </label>
+                                    <div class="col-xs-4">
+                                        <input class="form-control" id="duration" placeholder="Duration" type="text"
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                            maxlength="2" formControlName="duration" required>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                        <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                                            (click)="addRoundFormGroup()" matTooltip="Add">
+                                            <mat-icon>add_circle_outline</mat-icon>
+                                        </button>
+                                        <button class="float-left" mat-icon-button color="primary"
+                                            aria-label="Remove/clear" (click)="removeOrClearRound(i)"
+                                            matTooltip="Remove">
+                                            <mat-icon>highlight_off</mat-icon>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="description"
+                                        class="col-sm-2 col-form-label text-nowrap">Description:</label>
+                                    <div class="col-xs-4">
+                                        <input type="text" id='degree' class="form-control"
+                                            placeholder="Describe your project" formControlName="description" required>
+                                    </div>
+                                    <label for="pointOfContact"
+                                        class="offset-sm-1 col-sm-2 col-form-label text-nowrap">Point of
+                                        Contact:</label>
+                                    <div class="col-xs-4">
+                                        <input type="text" id='degree' class="form-control" placeholder="P.O.C"
+                                            formControlName="pointOfContact" required>
+                                    </div>
+                                </div>
+
+                                <mat-divider></mat-divider><br />
+                            </div>
+                        </div>
+                        <br />
+                        <div>
+                            <button mat-flat-button color="primary" (click)="postJob()"
+                                [disabled]="jobDetailsForm.invalid">Post the Job!</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</form>

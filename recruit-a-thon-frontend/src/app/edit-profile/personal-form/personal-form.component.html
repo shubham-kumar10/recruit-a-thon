@@ -1,0 +1,84 @@
+<form [formGroup]="personalDetailsForm">
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 mb-4 align-items-stretch">
+                <div class="card border-0 rounded-0 h-100">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label for="email" class="col-sm-2 col-form-label text-nowrap">
+                                Email Address:
+                            </label>
+                            <div class="col-xs-4">
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                    placeholder="Enter your email" formControlName="email" required>
+                            </div>
+
+                            <label for="contact" class="offset-sm-1 col-sm-2 col-form-label text-nowrap">
+                                Contact Number:
+                            </label>
+                            <div class="col-xs-4">
+                                <input class="form-control" id="contact" placeholder="Contact number" type="text"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    maxlength="10" formControlName="contact" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="city" class="col-sm-2 col-form-label text-nowrap">City:</label>
+                            <div class="col-xs-4">
+                                <input type="text" id='city' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Enter your city" formControlName="city" required>
+                            </div>
+                            <label for="date" class="offset-sm-1 col-sm-2 col-form-label text-nowrap">Date of
+                                Birth:</label>
+                            <div class="col-xs-4">
+                                <input type="date" id="date" class="form-control" placeholder="dd-mm-yyyy" value=""
+                                    formControlName="dob" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="country" class="col-sm-2 col-form-label text-nowrap">
+                                Country:
+                            </label>
+                            <div class="col-xs-4">
+                                <input type="text" id='country' maxlength="30"
+                                    onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                    class="form-control" placeholder="Enter your nationality" formControlName="country"
+                                    required>
+                            </div>
+                            <label for="gender" class="offset-sm-1 col-sm-2 radio control-label">Gender:</label>
+                            <mat-radio-group formControlName="gender" aria-label="Gender" color="primary">
+                                <mat-radio-button value="M">Male</mat-radio-button> &nbsp;&nbsp;&nbsp;
+                                <mat-radio-button value="F">Female</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="summary" class="col-sm-2 col-form-label text-nowrap">Summary:</label>
+                            <textarea id="summary" class="col-sm-10 form-control" name="summary" maxlength="200"
+                                formControlName="summary" rows="3" cols="30">
+                                </textarea>
+                        </div>
+
+                        <div class="form-group row">
+                            <mat-slide-toggle class="col-12" [(ngModel)]="isChecked" formControlName="role"
+                                color="primary">
+                                <div class="mt-4">
+                                    Want to post jobs as well? <br>
+                                    <label class="text-info">
+                                        {{isChecked ? 'Sure' : 'Will decide later'}}
+                                    </label>
+                                </div>
+                            </mat-slide-toggle>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button mat-button matStepperNext (click)="addCandidateDetails()">Next</button>
+    </div>
+</form>

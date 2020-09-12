@@ -1,0 +1,13 @@
+{
+    "userName": "test@email.com",
+    "password": "pwd",
+    "firstName": "Tony",
+    "lastName": "Stark",
+    "contactNumber": "1234567890",
+    "regCode": "",
+    "role": "S",
+    "active": true,
+    "confirmedSignUp": true,
+    "resetPassword": "",
+    "resetPasswordDate": ""
+}

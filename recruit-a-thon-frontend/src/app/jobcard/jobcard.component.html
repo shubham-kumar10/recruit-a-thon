@@ -1,0 +1,123 @@
+<div class="card mb-4 pointer-link" data-toggle="modal" data-target="#myModal">
+  <div class="card-body">
+    <h5 class="row pl-2 text-muted">{{jobDetails.companyName}}</h5>
+    <h6 class="row pl-2 mb-2 text-muted">{{jobDetails.position}}</h6>
+    <div class="row text-muted pl-2">
+      <i class="fa fa-briefcase p-1"></i>
+      {{jobDetails.minimumExperience}} years |
+      <i class="fa fa-inr p-1"></i>
+      INR {{jobDetails.compensation}} LPA |
+      <i class="fa fa-map-marker p-1"></i>
+      {{jobDetails.location}}
+    </div>
+    <div class="row pl-2 mt-3">
+      <a href="javascript:void(0)" class="card-link" (click)="applyforjob()">Apply now</a>
+      <a href="javascript:void(0)" class="card-link" (click)="savejob()">Save</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog modal-lg">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="container-fluid">
+          <div class="row">
+            <h4 class="modal-title">{{jobDetails.position}}</h4>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">{{jobDetails.companyName}} </div>
+            <div class="offset-sm-1 col-xs-6">Posted
+              on:
+              {{jobDetails.postedOn.toString().slice(0, 15)}}</div>
+          </div>
+        </div>
+
+
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <h5>Job Description:</h5>
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Position: </div>
+              <div class="col-xs-6 pl-1">{{jobDetails.description}}</div>
+            </div>
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Location: </div>
+              <div class="col-xs-6 pl-1">{{jobDetails.location}}</div>
+            </div>
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Desired Experience:</div>
+              <div class="col-xs-6 pl-1">{{jobDetails.minimumExperience}} years</div>
+            </div>
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Salary:</div>
+              <div class="col-xs-6 pl-1">
+                <i class="fa fa-inr p-1"></i>
+                {{jobDetails.compensation}} LPA
+              </div>
+            </div>
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Course Specialization:</div>
+              <div class="col-xs-6 pl-1">{{jobDetails.minimumEducation}}</div>
+            </div>
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Contact Person:</div>
+              <div class="col-xs-6 pl-1">{{jobDetails.pointOfContact}}</div>
+            </div>
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Skills
+                required:</div>
+              <div class="row">
+                <li class="offset-sm-2 col-xs-6" *ngFor="let skill of jobDetails.skillsRequired">
+                  {{skill.name}} with {{skill.experience}} yrs experience
+                </li>
+              </div>
+            </div>
+            <div class="row">
+              <div class="offset-sm-1 col-xs-6">Interview Process:</div>
+              <div class="row">
+                <li class="offset-sm-2 col-xs-6">Interview type: {{jobDetails.process.description}}</li>
+                <li class="offset-sm-2 col-xs-6">Interview location: {{jobDetails.process.location}}</li>
+                <li class="offset-sm-2 col-xs-6">No. of rounds: {{jobDetails.process.rounds.length}}</li>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="row">
+              <div class="col-xs-6">No. of vacancies:</div>
+              <div class="col-xs-6 pl-1">{{jobDetails.vacancies}}</div>
+            </div>
+            <div class="row">Interview Rounds Details:</div>
+            <div class="row ml-2" *ngFor="let detail of jobDetails.process.rounds; let i = index">
+              <div> Round {{i+1}}:</div>
+              <div class="row">
+                <ul>
+                  <li>Round Description: {{detail.description}}</li>
+                  <li>Location: {{detail.location}}</li>
+                  <li>Duration: {{detail.duration}}</li>
+                  <li>Contact Person: {{detail.pointOfContact}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" (click)="applyforjob()">Apply</button>
+          <button type="button" class="btn btn-default" (click)="savejob()">Save</button>
+          <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+        </div>
+      </div>
+
+    </div>
+  </div>

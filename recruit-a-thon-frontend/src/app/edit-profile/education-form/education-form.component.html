@@ -1,0 +1,85 @@
+<form [formGroup]="educationDetailsForm">
+    <div class="row">
+        <div class="col-md-12 col-lg-12 mb-4 align-items-stretch">
+            <div class="card border-0 rounded-0 h-100">
+                <div class="card-title mb-1 p-3">
+                    <h5>Education Details:</h5>
+                </div>
+                <div class="card-body">
+
+                    <div formArrayName="educations">
+                        <div *ngFor="let education of educationDetailsForm.get('educations')['controls']; let i = index"
+                            [formGroupName]="i">
+
+                            <div class="form-group row">
+                                <label for="institution" class="col-sm-2 col-form-label text-nowrap">Institute
+                                    Name:</label>
+                                <div class="col-xs-4">
+                                    <input type="text" id='institution' maxlength="20"
+                                        onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                        class="form-control" placeholder="Enter your institution name"
+                                        formControlName="institution" required>
+                                </div>&nbsp;&nbsp;&nbsp;
+                                <label for="degree" class="col-sm-2 col-form-label text-nowrap">Board/ Degree:</label>
+                                <div class="col-xs-4">
+                                    <input class="form-control" id="degree" placeholder="Enter your degree/degree"
+                                        type="text"
+                                        onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                        formControlName="degree" required>
+                                </div>
+
+                                <div class="col-xs-4">
+                                    <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                                        (click)="addEducationFormGroup()" matTooltip="Add">
+                                        <mat-icon>add_circle_outline</mat-icon>
+                                    </button>
+                                    <button class="float-left" mat-icon-button color="primary" aria-label="Remove/clear"
+                                        (click)="removeOrClearEducation(i)" matTooltip="Remove">
+                                        <mat-icon>highlight_off</mat-icon>
+                                    </button>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="description" class="col-sm-2 col-form-label text-nowrap">Stream:</label>
+                                <div class="col-xs-4">
+                                    <input type="text" id='description' maxlength="15"
+                                        onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                        class="form-control" placeholder="Enter your stream/major"
+                                        formControlName="description" required>
+                                </div>&nbsp;&nbsp;&nbsp;
+                                <label for="startDate" class="col-sm-2 col-form-label text-nowrap">Starting
+                                    date:</label>
+                                <div class="col-xs-4">
+                                    <input type="date" id="startDate" class="form-control" placeholder="dd-mm-yyyy"
+                                        value="" formControlName="startDate" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="zipcode" class="col-sm-2 col-form-label text-nowrap">Percentage(%):</label>
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control" id="percentage"
+                                        placeholder="Enter your percentage"
+                                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                        maxlength="3" formControlName="percentage" required>
+                                </div>&nbsp;&nbsp;&nbsp;
+                                <label for="endDate" class="col-sm-2 col-form-label text-nowrap">Ending date:</label>
+                                <div class="col-xs-4">
+                                    <input type="date" id="endDate" class="form-control" placeholder="dd-mm-yyyy"
+                                        value="" formControlName="endDate" required>
+                                </div>
+                            </div>
+                            <hr />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="addEducationDetails()">Next</button>
+    </div>
+</form>

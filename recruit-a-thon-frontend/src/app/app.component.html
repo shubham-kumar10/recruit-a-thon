@@ -1,0 +1,14 @@
+<app-header *ngIf="displayHeader"></app-header>
+<div class="wrapper default-theme" [ngClass]="getClasses()">
+  <app-nav-bar *ngIf="displayBar"></app-nav-bar>
+  <main>
+    <app-side-bar *ngIf="displayBar"></app-side-bar>
+    <div class="pages container-fluid p-4">
+      <!-- routes will be rendered here -->
+      <router-outlet></router-outlet>
+      <app-footer *ngIf="displayFooter"></app-footer>
+    </div>
+    <div class="overlay" (click)="toggleSidebar()"></div>
+  </main>
+</div>
+<!-- footer -->

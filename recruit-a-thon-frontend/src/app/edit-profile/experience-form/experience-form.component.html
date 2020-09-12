@@ -1,0 +1,93 @@
+<form [formGroup]="experienceDetailsForm">
+    <div>
+        <div class="row">
+            <div class="col-md-12 col-lg-12 mb-4 align-items-stretch">
+                <div class="card border-0 rounded-0 h-100">
+                    <div class="card-body">
+
+                        <div formArrayName="experiences">
+                            <div *ngFor="let experience of experienceDetailsForm.get('experiences')['controls']; let i = index"
+                                [formGroupName]="i">
+
+                                <div class="form-group row">
+                                    <label for="designation" class="col-sm-2 col-form-label text-nowrap">Position
+                                        {{i+1}}:</label>
+                                    <div class="col-xs-4">
+                                        <input type="text" id='designation' maxlength="20"
+                                            onkeypress='return ((event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode == 32))'
+                                            class="form-control" placeholder="Enter your designation"
+                                            formControlName="designation" required>
+                                    </div>&nbsp;&nbsp;&nbsp;
+                                    <label for="type" class="col-sm-2 col-form-label text-nowrap">Employment
+                                        type:</label>
+                                    <div class="col-xs-4">
+                                        <select id="type" name="type" class="form-control" formControlName="type">
+                                            <option value="" disabled selected hidden>Your employment type</option>
+                                            <option value="parttime">Part-time</option>
+                                            <option value="fulltime">Full-time</option>
+                                            <option value="internship">Internship</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-xs-4">
+                                        <button class="float-left" mat-icon-button color="primary" aria-label="Add"
+                                            (click)="addExperienceFormGroup()" matTooltip="Add">
+                                            <mat-icon>add_circle_outline</mat-icon>
+                                        </button>
+                                        <button class="float-left" mat-icon-button color="primary"
+                                            aria-label="Remove/clear" (click)="removeOrClearExperience(i)"
+                                            matTooltip="Remove">
+                                            <mat-icon>highlight_off</mat-icon>
+                                        </button>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="organization"
+                                        class="col-sm-2 col-form-label text-nowrap">Company:</label>
+                                    <div class="col-xs-4">
+                                        <input type="text" id='organization' maxlength="20" class="form-control"
+                                            placeholder="Company name" formControlName="organization" required>
+                                    </div>&nbsp;&nbsp;&nbsp;
+                                    <label for="startDate" class="col-sm-2 col-form-label text-nowrap">Starting
+                                        date:</label>
+                                    <div class="col-xs-4">
+                                        <input type="date" id="startDate" class="form-control" placeholder="dd-mm-yyyy"
+                                            value="" formControlName="startDate" required>
+                                    </div>
+
+                                </div>
+                                <div class="form-group row">
+                                    <label for="location" class="col-sm-2 col-form-label text-nowrap">Location:</label>
+                                    <div class="col-xs-4">
+                                        <input class="form-control" id="location" placeholder="Company location"
+                                            type="text" maxlength="15" formControlName="location" required>
+                                    </div>&nbsp;&nbsp;&nbsp;
+                                    <label for="endDate" class="col-sm-2 col-form-label text-nowrap">Ending
+                                        date:</label>
+                                    <div class="col-xs-4">
+                                        <input type="date" id="endDate" class="form-control" placeholder="dd-mm-yyyy"
+                                            value="" formControlName="endDate" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-xs-4">
+                                        <mat-checkbox class="col-12" formControlName="current" color="primary">Currently
+                                            working here</mat-checkbox>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="addExperienceDetails()">Next</button>
+    </div>
+</form>
