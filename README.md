@@ -9,10 +9,10 @@ Our project provides a transparent hiring procedure where the details of the int
 The web application is built using Angular and Springboot.
 
 ## Repo link for backend:
-[a link](https://github.com/shubham-kumar10/recruit-a-thon-backend)
+[Spring-boot code](https://github.com/shubham-kumar10/recruit-a-thon-backend)
 
 ## Repo link for frontend:
-[a link](https://github.com/shubham-kumar10/recruit-a-thon-frontend)
+[Angular code](https://github.com/shubham-kumar10/recruit-a-thon-frontend)
 
 ## Demo link:
 https://suit-up-app.herokuapp.com/
